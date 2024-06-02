@@ -19,6 +19,7 @@ const LushCard = ({ background, title, paragraph }) => {
 function App() {
   console.log(Navbar);
   const [count, setCount] = useState(0);
+  const [color, setColor] = useState('#f1f3f4')
 
 
   const shop = { url: '/shop', text: 'Shop' }
@@ -52,8 +53,8 @@ function App() {
     },
   ];
 
-  const handleCardClick = (title) => {
-    console.log({title})
+  const handleCardClick = (color) => {
+    console.log({color})
   }
 
 
@@ -62,11 +63,20 @@ function App() {
 
       <Navbar { ...navbarProps } />
       <main>
-        <h1>{ count }</h1>
-        <button onClick = { () => setCount (count + 1) }>+</button>
-        {/* {data.map((element, i) => {
-          return <Card handleClick={handleCardClick} title= { element.title } key= { i }>{ element.children }</Card>
-        }) } */}
+        <h1>{ color }</h1>
+        <input type="color" value={color} onChange={(event) => {setColor(event.target.value)}}/>
+
+        <div className="main">
+        {data.map((element, i) => {
+          return (
+             <Card handleClick={handleCardClick} color= { color } key= { i }>
+            { element.children }
+            </Card>
+          );
+        })}
+        </div>
+        
+        
       </main>
       {/* <div className="card-container">
         {LushCardData.map((card, index) => (

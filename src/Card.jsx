@@ -1,8 +1,8 @@
 import './Card.css'
 
-const Card = ({title, children, handleClick})=> {
-    return (<div className="Card" onClick = {() => handleClick(title) }>
-         <h3>{ title }</h3>
+const Card = ({color, children, handleClick})=> {
+    return (<div className="Card" onClick = {() => handleClick(color) } style={{backgroundColor: color}}>
+         <h3>{ color }</h3>
          <div>{ children }</div>
         </div>
     )
