@@ -1,22 +1,29 @@
 import './Navbar.css';
+import { useState } from 'react';
 
 const Navbar = ({ logo, listOfLinks }) => {
+    const [logedIn, setLogedIn] = useState(false);
 
     console.log ({ logo, listOfLinks });
 
 const routes = listOfLinks.map((link, i) => {
     return <a key={i} href={ link.url }>{ link.text }</a>
-
 } );
-
 
     return <div className="Navbar" >
         <img className="Navbar-logo" src= { logo } alt="Techover" />
         <div className="Navbar-links">
             { routes }
-        </div>
+            { logedIn ? (
+                <button onClick={() => setLogedIn (false) }>Logout</button>
+            ) : (
+                <button onClick={() => setLogedIn (true) }>Login</button>
+            )}
+            
+            
 
-    </div>
+        </div>
+        </div>
 }
 
 export default Navbar;
